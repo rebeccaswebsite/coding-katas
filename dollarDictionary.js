@@ -19,8 +19,13 @@ output : “temporary here comes the name John Doe”
 */
 
 function dictionaryReplacer(string, object) {
+    if (string == "" || object == {} ) {
+        return ""
+    }
+    else {
     const wordArray = string.split("\$")
     // split(). splits a string into an array of strings using a specified separator string
     const newWord = wordArray[1]
     return `${object[newWord]}`
+    }
 }
