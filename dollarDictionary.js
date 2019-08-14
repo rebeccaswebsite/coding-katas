@@ -18,14 +18,42 @@ input : “\$temp\$ here comes the name \$name\$“dict [“temp”, “temporar
 output : “temporary here comes the name John Doe”
 */
 
+
 function dictionaryReplacer(string, object) {
     if (string == "" || object == {} ) {
         return ""
     }
+      // Check if the string or object is empty and if so return an empty string.
     else {
-    const wordArray = string.split("\$")
-    // split(). splits a string into an array of strings using a specified separator string
-    const newWord = wordArray[1]
-    return `${object[newWord]}`
-    }
+
+      const wordsArr = string.split(' ')
+      // split sentence into an array of words
+
+      const regex = /^\$\w+\$/;
+      // Use regex to select parts of the string which we will need to change.
+      // Regex for strings excludes backlash as it is a special character in a string 
+      // because it's the escaping character; thus console.log('\\') would result in \.
+      // So regex does not need to match backlashes.
+      // ^\$ specifies that string must start with the character $ literally , \w+ 
+      // matches any word character an unlimited number of times, and final \$ matches
+      // the character $ literally.
+
+      let newString = ""
+
+      for (var i = 0; i < wordsArr.length; i++) { 
+        if (newString == "" && wordsArr[i].match(regex)) {
+        newString = string.replace(wordsArr[i], "hey");
+        }
+        if (newString != "" && wordsArr[i].match(regex)) {
+        newString = newString.replace(wordsArr[i], "hey");
+        }
+      }
+      // Iterate through array of words- if the array element matches the regex replace
+      // with "hey" and assign the new string to the newString variable.
+      // There are two conditions to make sure that multiple words can be replaced.
+      // Otherwise, newString would get overwritten each time the loop went through. 
+      return newString
+      // Finally return the newString with replaced words.
+  }
 }
+
