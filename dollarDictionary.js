@@ -42,14 +42,16 @@ function dictionaryReplacer(string, object) {
 
       for (var i = 0; i < wordsArr.length; i++) { 
         if (newString == "" && wordsArr[i].match(regex)) {
-        newString = string.replace(wordsArr[i], "hey");
+            newString = string.replace(wordsArr[i], object[wordsArr[i].slice(1,-1)]);
         }
         if (newString != "" && wordsArr[i].match(regex)) {
-        newString = newString.replace(wordsArr[i], "hey");
+            newString = newString.replace(wordsArr[i], object[wordsArr[i].slice(1,-1)]);
         }
       }
-      // Iterate through array of words- if the array element matches the regex replace
-      // with "hey" and assign the new string to the newString variable.
+      // Iterate through the array of words. If the array element matches the regex, replace
+      // this word in the original string with the value of the key in the object that
+      // is the same as the current array element (minus the dollar signs).
+      // Then assign the new string to the newString variable.
       // There are two conditions to make sure that multiple words can be replaced.
       // Otherwise, newString would get overwritten each time the loop went through. 
       return newString
