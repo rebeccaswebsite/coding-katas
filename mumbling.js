@@ -14,10 +14,15 @@ From https://www.codewars.com
 */
 
 const accum = word => {
-    let letters = word.split('')
-    // Split word into an array to iterate over
-    
-    letters.forEach((char, index) =>
-    console.log(`${index}:${char}`
-    ))
+    const letters = word.split('')
+
+    const transformedArr = []
+
+    letters.forEach((char, index) => {
+      let upperChar = char.toUpperCase();
+      let extraChars = char.toLowerCase().repeat(index);
+      transformedArr.push(upperChar+extraChars)   
+    })
+
+    return transformedArr.join('-')
 }
