@@ -14,6 +14,19 @@ So the result of function meeting(s) will be:
 "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
 */
 
+function transformName(name) {
+    nameArr = name.toUpperCase().split(":")
+    return [nameArr[0], nameArr[1]] = [nameArr[1], nameArr[0]].join(", ")
+}
+  
 function sortInvites(list) {
+    const names = list.split(";")
+  
+    const newNames = []
 
+    for (let ele of names) {
+    newNames.push(`(${transformName(ele)})`)
+    }
+
+    return newNames.sort().join("")
 }
