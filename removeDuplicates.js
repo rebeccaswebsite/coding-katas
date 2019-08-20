@@ -17,14 +17,21 @@ Output:
 */
 
 function removeDuplicates(str) {
-    const items = str.split(" ")
-    const newItems = []
+    const words = str.split(" ")
+    // Split string to be iterated over
+    const newWords = []
+    // Create empty array for single words to be added to
 
-    items.forEach(function(item){
-        if (!newItems.includes(item)) {
-          newItems.push(item)
+    words.forEach(function(word){
+        if (!newWords.includes(word)) {
+        // Iterate through words and check to see if the word has already been recorded
+        // in the newWords array
+        // This ensures each word is only added to the array once
+          newWords.push(word)
+        // If it's not in the newWords array already, then the word is added
         }
     });
   
-    return newItems
+    return newWords.join(", ")
+    // Return the array of the single words, joined with a comma and space as a string
 }
