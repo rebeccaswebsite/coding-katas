@@ -15,7 +15,15 @@ Output:
 'alpha beta gamma delta'
 
 */
-
 function removeDuplicates(str) {
+    const items = str.split(" ")
+    const newItems = []
 
+    items.forEach(function(item){
+        if (!newItems.includes(item)) {
+          newItems.push(item)
+        }
+    });
+  
+    return newItems
 }
