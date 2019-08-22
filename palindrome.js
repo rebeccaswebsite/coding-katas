@@ -6,12 +6,16 @@ whether or not a string is a palindrome string. Palnidrom means the string will 
 the same from left to right or right to left. Example: level
 */
 
-
 function palindrome(word) {
-    if (word == word.split('').reverse().join('')) {
-        return true
-    }
-    else {
-        return false 
-    }
+  if (
+    word ===
+    word
+      .split("")
+      .reverse()
+      .join("")
+  ) {
+    return true
+  } else {
+    return false
+  }
 }
